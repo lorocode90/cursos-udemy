@@ -25,12 +25,12 @@ export class TaskController {
   @Post('create')
   @UsePipes(new ValidationPipe())
   craete(@Body() taskDTO: TaskDTO) {
-    //  throw new BadRequestException('Error en peticion');
-    throw new HttpException('Error en peticion', HttpStatus.BAD_REQUEST);
-    //  return new Promise((resolve, rejects) => {
-    //    setTimeout(() => rejects('Error en peticion'), 2000);
-    //  });
-    //  return this.taskService.create(taskDTO);
+    //throw new BadRequestException('Error en peticion');
+    //throw new HttpException('Error en peticion', HttpStatus.BAD_REQUEST);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => reject('Error en peticion'), 15000);
+    });
+    //return this.taskService.create(taskDTO);
   }
   @Put('update/:id')
   update(@Param('id') id: string, @Body() taskDTO: TaskDTO) {
